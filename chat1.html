@@ -1,0 +1,494 @@
+<html>
+
+<head>
+    <title>Chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu,
+                Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            background: #000000;
+        }
+
+        .chat {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .card {
+            height: 500px;
+            border-radius: 15px !important;
+            background-color: rgba(0, 0, 0, 0.4) !important;
+        }
+
+
+        .msg_card_body {
+            overflow-y: auto;
+        }
+
+
+        .container {
+            align-content: center;
+        }
+
+        .type_msg {
+            background-color: rgba(0, 0, 0, 0.3) !important;
+            border: 0 !important;
+            color: white !important;
+            height: 60px !important;
+            overflow-y: auto;
+        }
+
+        .type_msg:focus {
+            box-shadow: none !important;
+            outline: 0px !important;
+        }
+
+        .attach_btn {
+            border-radius: 15px 0 0 15px !important;
+            background-color: rgba(0, 0, 0, 0.3) !important;
+            border: 0 !important;
+            color: white !important;
+            cursor: pointer;
+        }
+
+        .send_btn {
+            border-radius: 0 15px 15px 0 !important;
+            background-color: rgba(0, 0, 0, 0.3) !important;
+            border: 0 !important;
+            color: white !important;
+            cursor: pointer;
+        }
+
+        .search_btn {
+            border-radius: 0 15px 15px 0 !important;
+            background-color: rgba(0, 0, 0, 0.3) !important;
+            border: 0 !important;
+            color: white !important;
+            cursor: pointer;
+        }
+
+
+        .active {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .img_cont {
+            position: relative;
+            height: 70px;
+            width: 70px;
+        }
+
+        .img_cont_msg {
+            margin-top: 10px;
+            height: 40px;
+            width: 40px;
+        }
+
+        .msg_cotainer {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-right: 10px;
+            border-radius: 25px;
+            background-color: #82ccdd;
+            padding: 10px;
+            position: relative;
+        }
+
+        .msg_cotainer_send {
+            margin-top: 5 px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            border-radius: 25px;
+            background-color: #78e08f;
+            padding: 10px;
+            position: relative;
+        }
+
+        @media (max-width: 576px) {
+            .contacts_card {
+                margin-bottom: 15px !important;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu,
+                Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            background: #000000;
+        }
+
+        .navbar {
+            position: fixed;
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(0, 0, 0);
+            width: 100%;
+            border: 1px solid rgb(0, 0, 0);
+        }
+
+        .headddd {
+            text-decoration-color: #fafafa;
+            font-size: x-large;
+        }
+
+        .butbut1 {
+            background-color: #000000;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+
+
+        }
+
+        .navbar .container {
+            /* background-color: #555; */
+            padding: 15px 0;
+            width: 75%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 auto;
+        }
+
+        .nav-group .nav-item {
+            list-style-type: none;
+            margin: 0 8px;
+        }
+
+        .nav-group .nav-item a {
+            font-size: 22px;
+            display: block;
+            color: black;
+        }
+
+        .nav-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        main .container {
+            position: relative;
+            margin-top: 60px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(0, 0, 0);
+        }
+
+        .col-3 .card {
+            margin-bottom: 20px;
+            position: relative;
+            width: 100%;
+            /* min-height: 400px; */
+            display: inline-block;
+        }
+
+        .col-3 .card .top {
+            padding: 10px 0px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .imgBx {
+            position: relative;
+            width: 100%;
+            min-height: 600px;
+            margin: 10px 0 15px;
+        }
+
+        .message {
+            font-weight: 400;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #777;
+            line-height: 1.5em;
+        }
+
+        .message b {
+            color: #262626;
+        }
+
+        .message span {
+            cursor: pointer;
+            color: #1d92ff;
+        }
+
+
+
+        input.text {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-weight: 400;
+            font-size: 14px;
+            color: #262626;
+            background: none;
+        }
+
+        input.text::placeholder {
+            color: #777;
+        }
+
+        .postTime {
+            margin-top: 8px;
+            font-weight: lighter;
+            color: rgb(163, 163, 163);
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+
+
+
+        .footer .footer-section {
+            margin-left: 0.5rem;
+            color: #999999;
+            font-size: 14px;
+            font-family: sans-serif;
+        }
+
+        .footer a:hover {
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <button class="butbut1"></button>
+
+                <h1 style="font-size:50;color :aliceblue">CHAT
+                </h1>
+
+                <div class="nav-links">
+                    <div class="nav-group">
+                        </ul>
+                    </div>
+                </div>
+        </nav>
+    </header>
+    <div class="container-fluid h-100">
+        <div class="row justify-content-center h-100">
+
+            <div class="col-md-8 col-xl-6 chat">
+                <div class="card">
+                    <div class="msg_cotainer_send" id="sendDiv">
+                        SADSD </div>
+                    <div class="img_cont_msg">
+                    </div>
+                    <div class="card-body msg_card_body" id="bodyContent">
+
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <div class="input-group-append">
+                                <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+                            </div>
+                            <textarea name="message" id="message" class="form-control type_msg"
+                                placeholder="Type your message..."></textarea>
+                            <div class="input-group-append">
+                                <button id="submit" class="input-group-text send_btn"><i
+                                        class="fas fa-location-arrow"></i>
+                                    <h1>SEND</h1>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+    </script>
+
+
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+        import {
+            getDatabase,
+            set,
+            ref,
+            push,
+            child,
+            onValue,
+            onChildAdded
+        } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyApwHRFEN2Xdg87mmdFjNTdK31P5p-oVeo",
+            authDomain: "messagingapp-7655b.firebaseapp.com",
+            projectId: "messagingapp-7655b",
+            storageBucket: "messagingapp-7655b.appspot.com",
+            messagingSenderId: "276715131906",
+            appId: "1:276715131906:web:1df5043213e3e7a1da031b",
+            measurementId: "G-V6GTDK0RLG"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        var myName = prompt("Enter your name");
+
+        submit.addEventListener('click', (e) => {
+            var message = document.getElementById('message').value;
+            var name = myName;
+
+            const id = push(child(ref(database), 'messages')).key;
+
+            set(ref(database, 'messages/' + id), {
+                name: name,
+                message: message
+            });
+            document.getElementById('message').value = "";
+
+
+        });
+
+        const newMsg = ref(database, 'messages/');
+        onChildAdded(newMsg, (data) => {
+            if (data.val().name != myName) {
+                var divData = '                        <div class="img_cont_msg">\n' +
+
+                    '                        </div>\n' +
+                    '                        <div class="msg_cotainer" >\n' +
+                    '                            ' + data.val().message + '' +
+                    '                            <span class="msg_time"></span>\n' +
+                    '                        </div>\n' +
+                    '                    </div>';
+                var d1 = document.getElementById('bodyContent');
+                d1.insertAdjacentHTML('beforebegin', divData);
+            } else {
+                var divData = '                        <div class="msg_cotainer_send" id="sendDiv">\n' +
+                    '                            ' + data.val().message + '' +
+                    '                        </div>\n' +
+                    '                        <div class="img_cont_msg">\n' +
+                    '                        </div>\n' +
+                    '                    </div>';
+                var d1 = document.getElementById('bodyContent');
+                d1.insertAdjacentHTML('beforebegin', divData);
+            }
+        });
+
+    </script>
+
+
+    <script>
+
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+        else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+
+    </script>
+
+
+</body>
+
+</html>
