@@ -1,4 +1,4 @@
-# block-chain-project
+# Messaging_App
 
 Respected seniors,
 This web app was made with the help of firebase,vanilla js ,css,html.
@@ -9,7 +9,7 @@ please follow the following steps to operate the web app:
 
 please download the zip file and extract it 
 OR
-open this link:  https://srij1234.github.io/block-chain-project/  .
+open this link:  https://bhavyajalan.github.io/messagingapp/  .
 
 open the folder and follow the steps.
 
